@@ -9,12 +9,12 @@
 
 ## 페이지 구조
 
-| 경로 | 설명 |
-|---|---|
-| `/onboarding` | 성격 검사 설문 → `personality_type` 저장 |
-| `/dashboard` | 과제 카드 목록 |
-| `/agent1` | Agent1 채팅 — 과제 정보 수집 → `procrastination_type` 산출 → 카드 생성 |
-| `/agent2/[cardId]` | Agent2 채팅 — 카드별 CBT 솔루션 제공 |
+| 경로               | 설명                                                                   |
+| ------------------ | ---------------------------------------------------------------------- |
+| `/onboarding`      | 성격 검사 설문 → `personality_type` 저장                               |
+| `/dashboard`       | 과제 카드 목록                                                         |
+| `/agent1`          | Agent1 채팅 — 과제 정보 수집 → `procrastination_type` 산출 → 카드 생성 |
+| `/agent2/[cardId]` | Agent2 채팅 — 카드별 CBT 솔루션 제공                                   |
 
 ## 폴더 구조
 
