@@ -28,3 +28,7 @@ export function saveTask(task: TaskCard): void {
   const tasks = getTasks()
   localStorage.setItem(KEYS.tasks, JSON.stringify([...tasks, task]))
 }
+
+export function getTaskById(id: string): TaskCard | null {
+  return getTasks().find((t) => t.id === id) ?? null
+}
