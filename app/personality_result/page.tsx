@@ -7,37 +7,57 @@ import type { PersonalityType } from '@/lib/types'
 
 const TYPE_DATA: Record<PersonalityType, {
   tag: string
-  description: string
+  traits: string[]
   accent: string
   bg: string
 }> = {
   '비현실적 낙관주의': {
-    tag: '과신형',
-    description: '시간이 충분하다고 믿으며 미루는 유형입니다. 낙관적 사고가 계획의 현실성을 흐리게 만들어, 막상 시작하면 시간이 부족해지는 패턴이 반복됩니다.',
+    tag: '낙관주의형',
+    traits: [
+      '"나중에 하면 된다"는 막연한 자신감이 강함',
+      '실제 소요 시간을 과소평가함',
+      '마감 직전에 몰아서 처리하려는 경향',
+    ],
     accent: '#B45309',
     bg: '#FFFBF0',
   },
   '자기 비난': {
-    tag: '회피형',
-    description: '실수에 대한 두려움으로 시작을 꺼리는 유형입니다. 완벽하지 않을 바엔 아예 하지 않으려는 마음이 행동을 가로막습니다.',
+    tag: '자기비난형',
+    traits: [
+      '미루는 자신을 강하게 자책함',
+      '실패 경험을 자기 가치와 연결함',
+      '우울감, 무기력으로 시작 자체가 어려움',
+    ],
     accent: '#4338CA',
     bg: '#F5F5FF',
   },
   '현실 저항': {
-    tag: '저항형',
-    description: '해야 할 일에 반감을 느끼며 회피하는 유형입니다. 외부의 압박에 내면이 저항하면서 의도치 않은 지연이 생겨납니다.',
+    tag: '현실저항형',
+    traits: [
+      '하기 싫은 일에 대한 반감이 큼',
+      '미루는 순간 오히려 통제감을 느낌',
+      '해야 하는 이유보다 하기 싫은 이유를 먼저 찾음',
+    ],
     accent: '#BE123C',
     bg: '#FFF5F7',
   },
   '완벽주의': {
-    tag: '이상형',
-    description: '완벽한 조건이 갖춰질 때를 기다리는 유형입니다. 높은 기준이 오히려 시작을 가로막고, 결국 아무것도 완성하지 못하는 역설에 빠집니다.',
+    tag: '완벽주의형',
+    traits: [
+      '실패와 평가에 대한 불안이 큼',
+      '완벽하게 해야 한다는 압박이 강함',
+      '준비만 오래 하다가 시작이 늦어짐',
+    ],
     accent: '#6D28D9',
     bg: '#FAF5FF',
   },
   '자극 추구': {
-    tag: '긴장형',
-    description: '마감의 압박이 있어야 비로소 집중하는 유형입니다. 긴장감이 없으면 시작이 어렵고, 아슬아슬한 순간을 반복하게 됩니다.',
+    tag: '자극추구형',
+    traits: [
+      '새롭고 재미있는 일에 쉽게 끌림',
+      '흥미가 떨어지면 금방 포기함',
+      '즉각적인 보상과 자극을 선호함',
+    ],
     accent: '#065F46',
     bg: '#F0FDF9',
   },
@@ -123,9 +143,14 @@ export default function PersonalityResultPage() {
 
         <div className="w-10 h-px mx-auto mb-6" style={{ backgroundColor: data.accent + '60' }} />
 
-        <p className="text-sm text-neutral-600 leading-relaxed mb-12">
-          {data.description}
-        </p>
+        <ul className="text-left flex flex-col gap-2 mb-12">
+          {data.traits.map((trait, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm text-neutral-600 leading-relaxed">
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: data.accent }} />
+              {trait}
+            </li>
+          ))}
+        </ul>
 
         <div className="flex flex-col gap-3">
           <Link href="/dashboard">
