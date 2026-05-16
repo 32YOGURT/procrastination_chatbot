@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getTaskById } from "@/lib/storage";
 import type { TaskCard } from "@/lib/types";
+import ChatWindow from "@/components/chat/ChatWindow";
 
 interface Message {
   role: "user" | "assistant";
@@ -18,7 +19,6 @@ export default function Agent2Page() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [conversationId, setConversationId] = useState<string>("");
-  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const found = getTaskById(cardId);
@@ -28,10 +28,6 @@ export default function Agent2Page() {
     }
     setTask(found);
   }, [cardId, router]);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
 
   const handleSend = async () => {
     const trimmed = input.trim();
@@ -94,40 +90,11 @@ export default function Agent2Page() {
         </div>
       </header>
 
-      {/* 메시지 목록 */}
-      <main className="flex-1 overflow-y-auto px-6 py-6">
-        <div className="mx-auto max-w-2xl flex flex-col gap-4">
-          {messages.length === 0 && (
-            <p className="text-center text-sm text-neutral-400 mt-16">
-              솔루션 챗봇입니다. 구현 예정
-            </p>
-          )}
-          {messages.map((msg, i) => (
-            <div
-              key={i}
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
-                  msg.role === "user"
-                    ? "bg-neutral-800 text-white rounded-br-sm"
-                    : "bg-white border border-neutral-200 text-neutral-700 rounded-bl-sm"
-                }`}
-              >
-                {msg.content}
-              </div>
-            </div>
-          ))}
-          {loading && (
-            <div className="flex justify-start">
-              <div className="bg-white border border-neutral-200 rounded-2xl rounded-bl-sm px-4 py-3">
-                <span className="text-neutral-400 text-sm">···</span>
-              </div>
-            </div>
-          )}
-          <div ref={bottomRef} />
-        </div>
-      </main>
+      <ChatWindow
+        messages={messages}
+        loading={loading}
+        emptyText="어떤 부분이 가장 어려운지 이야기해주세요."
+      />
 
       {/* 입력창 */}
       <div className="border-t border-neutral-200 bg-white px-6 py-4">
