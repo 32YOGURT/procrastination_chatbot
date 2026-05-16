@@ -32,7 +32,7 @@ export default function DashboardPage() {
             )}
           </div>
           <Link
-            href="/onboarding"
+            href="/personality_result"
             className="rounded-lg border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100"
           >
             {personalityType ? "성격 재검사" : "성격 검사하기"}

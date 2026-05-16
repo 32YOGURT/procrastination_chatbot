@@ -14,6 +14,10 @@ export function setPersonalityType(type: PersonalityType): void {
   localStorage.setItem(KEYS.personalityType, type)
 }
 
+export function clearPersonalityType(): void {
+  localStorage.removeItem(KEYS.personalityType)
+}
+
 export function getTasks(): TaskCard[] {
   if (typeof window === 'undefined') return []
   const raw = localStorage.getItem(KEYS.tasks)

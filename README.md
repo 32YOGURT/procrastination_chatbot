@@ -11,25 +11,29 @@
 
 | 경로               | 설명                                                                   |
 | ------------------ | ---------------------------------------------------------------------- |
-| `/onboarding`      | 성격 검사 설문 → `personality_type` 저장                               |
-| `/dashboard`       | 과제 카드 목록                                                         |
-| `/agent1`          | Agent1 채팅 — 과제 정보 수집 → `procrastination_type` 산출 → 카드 생성 |
-| `/agent2/[cardId]` | Agent2 채팅 — 카드별 CBT 솔루션 제공                                   |
+| `/personality_result`  | 성격 검사 결과 — 결과 있으면 표시, 없으면 검사 선택 |
+| `/personality_test1`   | 성격 검사 1                                        |
+| `/personality_test2`   | 성격 검사 2                                        |
+| `/dashboard`           | 과제 카드 목록 (메인 화면)                          |
+| `/agent1`              | Agent1 채팅 — 과제 정보 수집 → `procrastination_type` 산출 → 카드 생성 |
+| `/agent2/[cardId]`     | Agent2 채팅 — 카드별 CBT 솔루션 제공               |
 
 ## 폴더 구조
 
 ```
 app/
-├── onboarding/page.tsx       # 성격 검사
-├── dashboard/page.tsx        # 과제 카드 목록
-├── agent1/page.tsx           # 과제 추가 채팅
-├── agent2/[cardId]/page.tsx  # 솔루션 채팅
+├── personality_result/page.tsx  # 성격 검사 결과 (결과 없으면 test1/test2 선택)
+├── personality_test1/page.tsx   # 성격 검사 1
+├── personality_test2/page.tsx   # 성격 검사 2
+├── dashboard/page.tsx           # 과제 카드 목록 (메인 화면)
+├── agent1/page.tsx              # 과제 추가 채팅
+├── agent2/[cardId]/page.tsx     # 솔루션 채팅
 └── api/
-    ├── agent1/route.ts       # Dify Agent1 프록시
-    └── agent2/route.ts       # Dify Agent2 프록시
+    ├── agent1/route.ts          # Dify Agent1 프록시
+    └── agent2/route.ts          # Dify Agent2 프록시
 
 components/
-├── ui/                       # 공용 UI 컴포넌트
+├── ui/                          # 공용 UI 컴포넌트
 ├── chat/
 │   ├── ChatWindow.tsx
 │   └── MessageBubble.tsx
@@ -40,6 +44,6 @@ components/
     └── QuestionStep.tsx
 
 lib/
-├── storage.ts                # LocalStorage 유틸
-└── types.ts                  # 공용 타입 정의
+├── storage.ts                   # LocalStorage 유틸
+└── types.ts                     # 공용 타입 정의
 ```
