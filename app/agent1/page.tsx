@@ -60,7 +60,7 @@ export default function Agent1Page() {
 
       try {
         parsed = JSON.parse(data.answer);
-        displayMessage = parsed.message;
+        displayMessage = parsed!.message;
       } catch {
         // plain text 응답
       }
