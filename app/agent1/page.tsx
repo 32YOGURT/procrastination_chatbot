@@ -16,10 +16,8 @@ interface DifyResponse {
   status: "collecting" | "confirmed";
   confirmed_stage?: ProcrastinationType;
   task_title?: string;
-  task_description?: string;
   task_deadline?: string;
   task_importance?: string;
-  task_category?: string;
   task_estimated_time?: string;
 }
 
@@ -75,15 +73,13 @@ export default function Agent1Page() {
         parsed.confirmed_stage &&
         parsed.task_title
       ) {
-        saveTask({
+        await saveTask({
           id: crypto.randomUUID(),
           title: parsed.task_title ?? "",
-          description: parsed.task_description ?? "",
           personalityType: personalityType!,
           procrastinationType: parsed.confirmed_stage,
           deadline: parsed.task_deadline ?? "",
           importance: parsed.task_importance ?? "",
-          taskCategory: parsed.task_category ?? "",
           estimatedTime: parsed.task_estimated_time ?? "",
           createdAt: new Date().toISOString(),
         });

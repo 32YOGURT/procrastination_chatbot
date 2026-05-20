@@ -15,12 +15,11 @@ export type ProcrastinationType =
 export interface TaskCard {
   id: string
   title: string
-  description: string
   personalityType: PersonalityType
   procrastinationType: ProcrastinationType
-  deadline: string        // 마감일 (YYYY-MM-DD)
-  importance: string      // 중요도 (예: 높음 / 보통 / 낮음)
-  taskCategory: string    // 과제 종류 (예: 보고서, 시험, 발표 등)
-  estimatedTime: string   // 예상 소요시간 (예: 2시간, 하루 등)
+  deadline: string
+  importance: string
+  estimatedTime: string
   createdAt: string
+  updatedAt: string
 }

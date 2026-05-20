@@ -17,11 +17,6 @@ export default function TaskCard({ task }: { task: TaskCardType }) {
 
         {/* 메타 정보 */}
         <div className="flex flex-wrap gap-2">
-          {task.taskCategory && (
-            <span className="rounded-md bg-neutral-100 px-2 py-0.5 text-xs text-neutral-500">
-              {task.taskCategory}
-            </span>
-          )}
           {task.importance && (
             <span className="rounded-md bg-neutral-100 px-2 py-0.5 text-xs text-neutral-500">
               중요도 {task.importance}

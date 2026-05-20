@@ -21,12 +21,13 @@ export default function Agent2Page() {
   const [conversationId, setConversationId] = useState<string>("");
 
   useEffect(() => {
-    const found = getTaskById(cardId);
-    if (!found) {
-      router.push("/dashboard");
-      return;
-    }
-    setTask(found);
+    getTaskById(cardId).then((found) => {
+      if (!found) {
+        router.push("/dashboard");
+        return;
+      }
+      setTask(found);
+    });
   }, [cardId, router]);
 
   const handleSend = async () => {

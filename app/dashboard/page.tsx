@@ -13,7 +13,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setPersonalityType(getPersonalityType());
-    setTasks(getTasks());
+    getTasks().then(setTasks);
   }, []);
 
   return (
