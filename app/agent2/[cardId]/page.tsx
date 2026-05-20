@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { getTaskById } from "@/lib/storage";
+import { getTaskById, updateConversationId } from "@/lib/storage";
 import type { TaskCard } from "@/lib/types";
 import ChatWindow from "@/components/chat/ChatWindow";
 
@@ -27,6 +27,7 @@ export default function Agent2Page() {
         return;
       }
       setTask(found);
+      if (found.conversationId) setConversationId(found.conversationId);
     });
   }, [cardId, router]);
 
@@ -52,7 +53,10 @@ export default function Agent2Page() {
 
       const data = await res.json();
 
-      if (data.conversationId) setConversationId(data.conversationId);
+      if (data.conversationId) {
+        setConversationId(data.conversationId);
+        updateConversationId(task.id, data.conversationId);
+      }
 
       setMessages((prev) => [
         ...prev,

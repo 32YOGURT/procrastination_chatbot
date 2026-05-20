@@ -20,6 +20,7 @@ export interface TaskCard {
   deadline: string
   importance: string
   estimatedTime: string
+  conversationId: string | null
   createdAt: string
   updatedAt: string
 }
