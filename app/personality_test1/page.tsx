@@ -43,10 +43,10 @@ export default function PersonalityTest1Page() {
     setAnswers(next);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (isLast) {
       const type = calculatePersonalityType(answers as number[]);
-      setPersonalityType(type);
+      await setPersonalityType(type);
       router.push("/personality_result");
     } else {
       setCurrentIndex((i) => i + 1);

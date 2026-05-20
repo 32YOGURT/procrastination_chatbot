@@ -45,10 +45,10 @@ export default function PersonalityTest2Page() {
     setSelected(next);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (isLast) {
       const type = calculatePersonalityType(selected);
-      setPersonalityType(type);
+      await setPersonalityType(type);
       router.push("/personality_result");
     } else {
       setCurrentIndex((i) => i + 1);

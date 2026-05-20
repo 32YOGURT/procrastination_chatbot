@@ -12,7 +12,7 @@ export default function DashboardPage() {
   const [tasks, setTasks] = useState<TaskCard[]>([]);
 
   useEffect(() => {
-    setPersonalityType(getPersonalityType());
+    getPersonalityType().then(setPersonalityType);
     getTasks().then(setTasks);
   }, []);
 

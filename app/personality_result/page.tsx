@@ -68,12 +68,12 @@ export default function PersonalityResultPage() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setPersonalityType(getPersonalityType())
+    getPersonalityType().then(setPersonalityType)
     setMounted(true)
   }, [])
 
-  const handleRetake = () => {
-    clearPersonalityType()
+  const handleRetake = async () => {
+    await clearPersonalityType()
     setPersonalityType(null)
   }
 

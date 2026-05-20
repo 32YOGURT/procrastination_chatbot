@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getPersonalityType, saveTask } from "@/lib/storage";
-import type { ProcrastinationType } from "@/lib/types";
+import type { PersonalityType, ProcrastinationType } from "@/lib/types";
 import ChatWindow from "@/components/chat/ChatWindow";
 
 interface Message {
@@ -27,7 +27,11 @@ export default function Agent1Page() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [conversationId, setConversationId] = useState<string>("");
-  const personalityType = getPersonalityType();
+  const [personalityType, setPersonalityTypeState] = useState<PersonalityType | null>(null);
+
+  useEffect(() => {
+    getPersonalityType().then(setPersonalityTypeState);
+  }, []);
 
   const handleSend = async () => {
     const trimmed = input.trim();
