@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
   const data = await res.json();
 
   return NextResponse.json({
-    answer: data.structured_output,
+    answer: data.answer,
     conversationId: data.conversation_id,
   });
 }

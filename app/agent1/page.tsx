@@ -13,9 +13,8 @@ interface Message {
 
 interface DifyResponse {
   message: string;
-  status: "collecting" | "confirmed";
+  is_completed?: boolean;
   show_ui?: boolean;
-  confirmed_stage?: ProcrastinationType;
   task_title?: string;
   task_deadline?: string;
   task_importance?: string;
@@ -49,6 +48,7 @@ export default function Agent1Page() {
   const [userName, setUserNameState] = useState<string | null>(null);
   const [selectorVisible, setSelectorVisible] = useState(false);
   const [proStageDone, setProStageDone] = useState(false);
+  const [selectedStage, setSelectedStage] = useState<ProcrastinationType | null>(null);
 
   useEffect(() => {
     getUser().then(({ personalityType: type, userName: name }) => {
@@ -82,8 +82,15 @@ export default function Agent1Page() {
       const data = await res.json();
       if (data.conversationId) setConversationId(data.conversationId);
 
-      const parsed: DifyResponse | null = data.answer ?? null;
-      const displayMessage: string = parsed?.message ?? "";
+      let displayMessage: string = data.answer;
+      let parsed: DifyResponse | null = null;
+
+      try {
+        parsed = JSON.parse(data.answer);
+        displayMessage = parsed!.message;
+      } catch {
+        // plain text
+      }
 
       setMessages((prev) => [
         ...prev,
@@ -93,15 +100,14 @@ export default function Agent1Page() {
       if (parsed?.show_ui) setSelectorVisible(true);
 
       if (
-        parsed?.status === "confirmed" &&
-        parsed.confirmed_stage &&
+        parsed?.is_completed === true &&
         parsed.task_title
       ) {
         await saveTask({
           id: crypto.randomUUID(),
           title: parsed.task_title ?? "",
           personalityType: currentPersonalityType!,
-          procrastinationType: parsed.confirmed_stage,
+          procrastinationType: selectedStage!,
           deadline: parsed.task_deadline ?? "",
           importance: parsed.task_importance ?? "",
           estimatedTime: parsed.task_estimated_time ?? "",
@@ -137,6 +143,7 @@ export default function Agent1Page() {
   const handleSelect = async (type: ProcrastinationType) => {
     setSelectorVisible(false);
     setProStageDone(true);
+    setSelectedStage(type);
     const text = `선택: ${type}`;
     setMessages((prev) => [...prev, { role: "user", content: text }]);
     await sendMessage(text, conversationId, personalityType, userName, true);
