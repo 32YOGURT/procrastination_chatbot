@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const { message, conversationId, personalityType } = await request.json();
+  const { message, conversationId, personalityType, userName, proStageDone } = await request.json();
 
   const res = await fetch(`${process.env.dify_endpoint_URL}/chat-messages`, {
     method: "POST",
@@ -10,17 +10,19 @@ export async function POST(request: NextRequest) {
       Authorization: `Bearer ${process.env.dify_API_KEY}`,
     },
     body: JSON.stringify({
-      inputs: { personality_type: personalityType },
+      inputs: { personality_type: personalityType, user_name: userName ?? "", pro_stage_done: proStageDone ?? false },
       query: message,
       response_mode: "blocking",
-      conversation_id: conversationId ?? "",
+      ...(conversationId ? { conversation_id: conversationId } : {}),
       user: "user",
     }),
   });
 
   if (!res.ok) {
+    const errorBody = await res.json().catch(() => ({}));
+    console.error("[agent1] Dify error:", res.status, errorBody);
     return NextResponse.json(
-      { error: "Dify API 요청 실패" },
+      { error: "Dify API 요청 실패", detail: errorBody },
       { status: res.status }
     );
   }
@@ -28,7 +30,7 @@ export async function POST(request: NextRequest) {
   const data = await res.json();
 
   return NextResponse.json({
-    answer: data.answer,
+    answer: data.structured_output,
     conversationId: data.conversation_id,
   });
 }
