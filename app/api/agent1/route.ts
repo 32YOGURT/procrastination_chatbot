@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.dify_API_KEY}`,
+      Authorization: `Bearer ${process.env.AGENT1_API_KEY}`,
     },
     body: JSON.stringify({
       inputs: { personality_type: personalityType, user_name: userName ?? "", pro_stage_done: proStageDone ?? false },

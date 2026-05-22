@@ -27,27 +27,24 @@ export default function Agent2Page() {
         return;
       }
       setTask(found);
-      if (found.conversationId) setConversationId(found.conversationId);
+      if (found.conversationId) {
+        setConversationId(found.conversationId);
+      } else {
+        sendMessage("[init]", "", found);
+      }
     });
   }, [cardId, router]);
 
-  const handleSend = async () => {
-    const trimmed = input.trim();
-    if (!trimmed || loading || !task) return;
-
-    const userMessage: Message = { role: "user", content: trimmed };
-    setMessages((prev) => [...prev, userMessage]);
-    setInput("");
+  const sendMessage = async (text: string, currentConversationId: string, currentTask: TaskCard) => {
     setLoading(true);
-
     try {
       const res = await fetch("/api/agent2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          message: trimmed,
-          conversationId,
-          task,
+          message: text,
+          conversationId: currentConversationId,
+          task: currentTask,
         }),
       });
 
@@ -55,13 +52,10 @@ export default function Agent2Page() {
 
       if (data.conversationId) {
         setConversationId(data.conversationId);
-        updateConversationId(task.id, data.conversationId);
+        updateConversationId(currentTask.id, data.conversationId);
       }
 
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.answer },
-      ]);
+      setMessages((prev) => [...prev, { role: "assistant", content: data.answer }]);
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -70,6 +64,15 @@ export default function Agent2Page() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSend = async () => {
+    const trimmed = input.trim();
+    if (!trimmed || loading || !task) return;
+
+    setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
+    setInput("");
+    await sendMessage(trimmed, conversationId, task);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {

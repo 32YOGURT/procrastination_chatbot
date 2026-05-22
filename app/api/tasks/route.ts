@@ -12,7 +12,20 @@ export async function GET(request: NextRequest) {
     .order('created_at', { ascending: false })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json(data)
+
+  const mapped = data.map((row) => ({
+    id: row.id,
+    title: row.title,
+    personalityType: row.personality_type,
+    procrastinationType: row.procrastination_type,
+    deadline: row.deadline ?? '',
+    importance: row.importance ?? '',
+    estimatedTime: row.estimated_time ?? '',
+    conversationId: row.conversation_id ?? null,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  }))
+  return NextResponse.json(mapped)
 }
 
 export async function POST(request: NextRequest) {
