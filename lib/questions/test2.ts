@@ -21,11 +21,11 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "또 미뤘네… 나는 왜 항상 이런 식이지. 시작할 자격도 없는 느낌이다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
       {
         text: "솔직히 이런 형식 맞추기 자체가 너무 비효율적이고 하기 싫다.",
-        type: "현실 저항",
+        type: "현실저항",
       },
       {
         text: "애매하게 쓰느니 제대로 구조 다 짜고 시작해야 하는데 그게 부담된다.",
@@ -33,7 +33,7 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "일단 다른 재밌는 거 좀 하다가 집중 오면 시작해야겠다.",
-        type: "자극 추구",
+        type: "자극추구",
       },
     ],
   },
@@ -51,15 +51,15 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "계속 같은 내용 보니까 너무 지루해서 다른 걸 하고 싶다.",
-        type: "자극 추구",
+        type: "자극추구",
       },
       {
         text: "나는 원래 집중력이 부족해서 공부해도 안 될 것 같다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
       {
         text: "왜 대학 공부는 맨날 외우기만 해야 하는지 모르겠다.",
-        type: "현실 저항",
+        type: "현실저항",
       },
     ],
   },
@@ -69,11 +69,11 @@ export const QUESTIONS: Test2Question[] = [
     options: [
       {
         text: "읽어도 현실적으로 도움 안 되는 것 같아서 더 하기 싫다.",
-        type: "현실 저항",
+        type: "현실저항",
       },
       {
         text: "몇 페이지 읽다가 바로 딴생각 나고 폰 보게 된다.",
-        type: "자극 추구",
+        type: "자극추구",
       },
       {
         text: "완벽하게 이해 못하면 의미 없을 것 같아서 부담된다.",
@@ -85,7 +85,7 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "영어 논문 읽는 속도 느린 내가 한심하게 느껴진다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
     ],
   },
@@ -95,7 +95,7 @@ export const QUESTIONS: Test2Question[] = [
     options: [
       {
         text: "이런 간단한 것도 제때 못하는 내가 너무 답답하다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
       {
         text: "혹시 서류 틀리면 어떡하지? 다시 계속 확인하게 된다.",
@@ -105,10 +105,10 @@ export const QUESTIONS: Test2Question[] = [
         text: "마감 직전에 해도 원래 금방 처리 가능함.",
         type: "비현실적 낙관주의",
       },
-      { text: "행정 절차 자체가 너무 귀찮고 짜증난다.", type: "현실 저항" },
+      { text: "행정 절차 자체가 너무 귀찮고 짜증난다.", type: "현실저항" },
       {
         text: "하다가 집중 안 돼서 자꾸 다른 앱 켜게 된다.",
-        type: "자극 추구",
+        type: "자극추구",
       },
     ],
   },
@@ -118,16 +118,16 @@ export const QUESTIONS: Test2Question[] = [
     options: [
       {
         text: "자기 전에 영상 하나만 더 보다 보니 계속 보게 됐다.",
-        type: "자극 추구",
+        type: "자극추구",
       },
       {
         text: "3시간 자도 어떻게든 버틸 수 있을 줄 알았다.",
         type: "비현실적 낙관주의",
       },
-      { text: "또 지각하면 진짜 한심한 대학생 같다.", type: "자기 비난" },
+      { text: "또 지각하면 진짜 한심한 대학생 같다.", type: "자기비난" },
       {
         text: "출석 체크 때문에 억지로 가는 느낌이라 더 가기 싫다.",
-        type: "현실 저항",
+        type: "현실저항",
       },
       {
         text: "피곤한 상태로 가서 집중 못할 바엔 그냥 쉬고 싶다.",
@@ -145,13 +145,13 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "왜 굳이 팀플로 해야 하는지 모르겠다. 혼자가 더 편하다.",
-        type: "현실 저항",
+        type: "현실저항",
       },
       {
         text: "팀원들에게 민폐인 것 같아서 더 눈치 보인다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
-      { text: "계속 같은 작업 반복하니까 너무 지루하다.", type: "자극 추구" },
+      { text: "계속 같은 작업 반복하니까 너무 지루하다.", type: "자극추구" },
       {
         text: "막판에 집중하면 충분히 따라잡을 수 있음.",
         type: "비현실적 낙관주의",
@@ -164,7 +164,7 @@ export const QUESTIONS: Test2Question[] = [
     options: [
       {
         text: "발표 못하면 사람들이 실망할 것 같고 내가 부족하게 느껴진다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
       {
         text: "발표 직전에 몰입하면 아이디어 잘 나오는 편이다.",
@@ -172,7 +172,7 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "사람들 앞에서 발표하는 문화 자체가 너무 피곤하다.",
-        type: "현실 저항",
+        type: "현실저항",
       },
       {
         text: "디자인, 대본, 흐름 다 완벽해야 할 것 같아서 시작이 어렵다.",
@@ -180,7 +180,7 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "PPT 만들다가 금방 질려서 다른 걸 하게 된다.",
-        type: "자극 추구",
+        type: "자극추구",
       },
     ],
   },
@@ -188,14 +188,14 @@ export const QUESTIONS: Test2Question[] = [
     scenario:
       "교수님 메일에 답장해야 하고, 조교가 보낸 공지도 확인해야 한다. 읽어놓고 며칠째 답장을 미루고 있다. 이때 가장 가까운 생각은?",
     options: [
-      { text: "이런 형식적인 연락 자체가 너무 스트레스다.", type: "현실 저항" },
+      { text: "이런 형식적인 연락 자체가 너무 스트레스다.", type: "현실저항" },
       {
         text: "메일 문장 하나하나 괜히 신경 쓰여서 쉽게 못 보낸다.",
         type: "완벽주의",
       },
       {
         text: "시간 지나서 답장하는 내가 예의 없는 사람처럼 느껴진다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
       {
         text: "나중에 한 번에 정리해서 답장하면 된다.",
@@ -203,7 +203,7 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "메일 확인하다가 다른 알림 눌러서 딴짓하게 된다.",
-        type: "자극 추구",
+        type: "자극추구",
       },
     ],
   },
@@ -217,7 +217,7 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "나는 스펙도 애매하고 경쟁력도 없는 것 같다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
       {
         text: "아직 학년 괜찮고 시간 좀 더 있으니까 천천히 해도 될 듯.",
@@ -225,11 +225,11 @@ export const QUESTIONS: Test2Question[] = [
       },
       {
         text: "한 가지 진로만 계속 준비하는 게 너무 답답하게 느껴진다.",
-        type: "자극 추구",
+        type: "자극추구",
       },
       {
         text: "취업 준비 과정 자체가 너무 획일적이라 거부감 든다.",
-        type: "현실 저항",
+        type: "현실저항",
       },
     ],
   },
@@ -237,7 +237,7 @@ export const QUESTIONS: Test2Question[] = [
     scenario:
       "이번 학기에는 매일 계획적으로 공부하기로 다짐했다. 하지만 며칠 지나자 루틴이 계속 무너지고 있다. 이때 가장 가까운 생각은?",
     options: [
-      { text: "똑같은 루틴 반복되니까 금방 질린다.", type: "자극 추구" },
+      { text: "똑같은 루틴 반복되니까 금방 질린다.", type: "자극추구" },
       {
         text: "지금 좀 쉬어도 나중에 몰아서 회복 가능할 듯.",
         type: "비현실적 낙관주의",
@@ -246,10 +246,10 @@ export const QUESTIONS: Test2Question[] = [
         text: "계획 한번 무너지니까 전체가 실패한 느낌이라 손 놓게 된다.",
         type: "완벽주의",
       },
-      { text: "정해진 루틴대로 사는 것 자체가 답답하다.", type: "현실 저항" },
+      { text: "정해진 루틴대로 사는 것 자체가 답답하다.", type: "현실저항" },
       {
         text: "결국 또 실패한 내가 너무 한심하게 느껴진다.",
-        type: "자기 비난",
+        type: "자기비난",
       },
     ],
   },

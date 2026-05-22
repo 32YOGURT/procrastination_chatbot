@@ -21,7 +21,7 @@ const TYPE_DATA: Record<PersonalityType, {
     accent: '#B45309',
     bg: '#FFFBF0',
   },
-  '자기 비난': {
+  '자기비난': {
     tag: '자기비난형',
     traits: [
       '미루는 자신을 강하게 자책함',
@@ -31,7 +31,7 @@ const TYPE_DATA: Record<PersonalityType, {
     accent: '#4338CA',
     bg: '#F5F5FF',
   },
-  '현실 저항': {
+  '현실저항': {
     tag: '현실저항형',
     traits: [
       '하기 싫은 일에 대한 반감이 큼',
@@ -51,7 +51,7 @@ const TYPE_DATA: Record<PersonalityType, {
     accent: '#6D28D9',
     bg: '#FAF5FF',
   },
-  '자극 추구': {
+  '자극추구': {
     tag: '자극추구형',
     traits: [
       '새롭고 재미있는 일에 쉽게 끌림',

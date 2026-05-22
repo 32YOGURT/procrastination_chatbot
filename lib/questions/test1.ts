@@ -16,12 +16,12 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "일을 미루는 나 자신이 실망스럽다.",
-    type: "자기 비난",
+    type: "자기비난",
     reverse: false,
   },
   {
     text: "하기 싫은 일은 가능한 한 피하려 한다.",
-    type: "현실 저항",
+    type: "현실저항",
     reverse: false,
   },
   {
@@ -31,7 +31,7 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "새로운 일이 더 흥미롭게 느껴진다.",
-    type: "자극 추구",
+    type: "자극추구",
     reverse: false,
   },
 
@@ -43,18 +43,18 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "'나는 잘 못하는 사람이다'라는 생각이 든다.",
-    type: "자기 비난",
+    type: "자기비난",
     reverse: false,
   },
   {
     text: "내 스타일과 맞지 않는 일은 미루고 싶다.",
-    type: "현실 저항",
+    type: "현실저항",
     reverse: false,
   },
   { text: "실패할까 봐 시작이 늦어진다.", type: "완벽주의", reverse: false },
   {
     text: "흥미를 잃으면 일을 쉽게 포기한다.",
-    type: "자극 추구",
+    type: "자극추구",
     reverse: false,
   },
 
@@ -66,12 +66,12 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "해야 할 일을 못하면 기분이 크게 나빠진다.",
-    type: "자기 비난",
+    type: "자기비난",
     reverse: false,
   },
   {
     text: "나는 해야 할 일을 바로 시작하는 편이다.",
-    type: "현실 저항",
+    type: "현실저항",
     reverse: true,
   },
   {
@@ -81,7 +81,7 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "나는 꾸준히 일을 지속하는 편이다.",
-    type: "자극 추구",
+    type: "자극추구",
     reverse: true,
   },
 
@@ -91,16 +91,16 @@ export const QUESTIONS: Test1Question[] = [
     type: "비현실적 낙관주의",
     reverse: false,
   },
-  { text: "나는 나 자신에게 관대하다.", type: "자기 비난", reverse: true },
+  { text: "나는 나 자신에게 관대하다.", type: "자기비난", reverse: true },
   {
     text: "일을 미루기 위한 이유를 찾을 때가 있다.",
-    type: "현실 저항",
+    type: "현실저항",
     reverse: false,
   },
   { text: "다른 사람의 평가가 신경 쓰인다.", type: "완벽주의", reverse: false },
   {
     text: "성과가 빨리 나오지 않으면 지친다.",
-    type: "자극 추구",
+    type: "자극추구",
     reverse: false,
   },
 
@@ -110,10 +110,10 @@ export const QUESTIONS: Test1Question[] = [
     type: "비현실적 낙관주의",
     reverse: false,
   },
-  { text: "작은 실패도 크게 받아들인다.", type: "자기 비난", reverse: false },
+  { text: "작은 실패도 크게 받아들인다.", type: "자기비난", reverse: false },
   {
     text: "나는 주어진 일을 그대로 받아들이는 편이다.",
-    type: "현실 저항",
+    type: "현실저항",
     reverse: true,
   },
   {
@@ -121,7 +121,7 @@ export const QUESTIONS: Test1Question[] = [
     type: "완벽주의",
     reverse: true,
   },
-  { text: "나는 지루한 일도 끝까지 해낸다.", type: "자극 추구", reverse: true },
+  { text: "나는 지루한 일도 끝까지 해낸다.", type: "자극추구", reverse: true },
 
   // 라운드 6
   {
@@ -131,12 +131,12 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "나는 나의 능력을 긍정적으로 평가한다.",
-    type: "자기 비난",
+    type: "자기비난",
     reverse: true,
   },
   {
     text: "미루기로 결정하면 마음이 편해진다.",
-    type: "현실 저항",
+    type: "현실저항",
     reverse: false,
   },
   {
@@ -146,7 +146,7 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "새로운 자극을 자주 찾는 편이다.",
-    type: "자극 추구",
+    type: "자극추구",
     reverse: false,
   },
 
@@ -158,12 +158,12 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "우울하거나 기분이 가라앉으면 일을 시작하기 어렵다.",
-    type: "자기 비난",
+    type: "자기비난",
     reverse: false,
   },
   {
     text: "귀찮다는 이유로 일을 미루는 경우가 많다.",
-    type: "현실 저항",
+    type: "현실저항",
     reverse: false,
   },
   {
@@ -173,7 +173,7 @@ export const QUESTIONS: Test1Question[] = [
   },
   {
     text: "흥미로운 일이 생기면 기존 일을 중단한다.",
-    type: "자극 추구",
+    type: "자극추구",
     reverse: false,
   },
 
@@ -183,10 +183,10 @@ export const QUESTIONS: Test1Question[] = [
     type: "비현실적 낙관주의",
     reverse: true,
   },
-  { text: "나는 내 실수를 쉽게 넘긴다.", type: "자기 비난", reverse: true },
+  { text: "나는 내 실수를 쉽게 넘긴다.", type: "자기비난", reverse: true },
   {
     text: "나는 책임감을 느끼면 바로 행동한다.",
-    type: "현실 저항",
+    type: "현실저항",
     reverse: true,
   },
   {
@@ -194,5 +194,5 @@ export const QUESTIONS: Test1Question[] = [
     type: "완벽주의",
     reverse: false,
   },
-  { text: "나는 집중력을 오래 유지한다.", type: "자극 추구", reverse: true },
+  { text: "나는 집중력을 오래 유지한다.", type: "자극추구", reverse: true },
 ];

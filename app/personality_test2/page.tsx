@@ -11,10 +11,10 @@ function calculatePersonalityType(
 ): PersonalityType {
   const counts: Record<PersonalityType, number> = {
     "비현실적 낙관주의": 0,
-    "자기 비난": 0,
-    "현실 저항": 0,
+    "자기비난": 0,
+    "현실저항": 0,
     완벽주의: 0,
-    "자극 추구": 0,
+    "자극추구": 0,
   };
 
   selected.forEach((type) => {

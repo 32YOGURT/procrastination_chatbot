@@ -1,9 +1,9 @@
 export type PersonalityType =
   | '비현실적 낙관주의'
-  | '자기 비난'
-  | '현실 저항'
+  | '자기비난'
+  | '현실저항'
   | '완벽주의'
-  | '자극 추구'
+  | '자극추구'
 
 export type ProcrastinationType =
   | '계획 지연'
