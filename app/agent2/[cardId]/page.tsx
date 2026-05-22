@@ -29,7 +29,9 @@ export default function Agent2Page() {
       setTask(found);
       if (found.conversationId) {
         setConversationId(found.conversationId);
-        const res = await fetch(`/api/agent2/messages?conversation_id=${found.conversationId}`);
+        const res = await fetch(
+          `/api/agent2/messages?conversation_id=${found.conversationId}`,
+        );
         if (res.ok) {
           const data = await res.json();
           setMessages(data.messages);
@@ -40,7 +42,11 @@ export default function Agent2Page() {
     });
   }, [cardId, router]);
 
-  const sendMessage = async (text: string, currentConversationId: string, currentTask: TaskCard) => {
+  const sendMessage = async (
+    text: string,
+    currentConversationId: string,
+    currentTask: TaskCard,
+  ) => {
     setLoading(true);
     try {
       const res = await fetch("/api/agent2", {
@@ -60,11 +66,17 @@ export default function Agent2Page() {
         updateConversationId(currentTask.id, data.conversationId);
       }
 
-      setMessages((prev) => [...prev, { role: "assistant", content: data.answer }]);
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: data.answer },
+      ]);
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "오류가 발생했어요. 다시 시도해주세요." },
+        {
+          role: "assistant",
+          content: "오류가 발생했어요. 다시 시도해주세요. ",
+        },
       ]);
     } finally {
       setLoading(false);
