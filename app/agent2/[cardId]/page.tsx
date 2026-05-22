@@ -21,7 +21,7 @@ export default function Agent2Page() {
   const [conversationId, setConversationId] = useState<string>("");
 
   useEffect(() => {
-    getTaskById(cardId).then((found) => {
+    getTaskById(cardId).then(async (found) => {
       if (!found) {
         router.push("/dashboard");
         return;
@@ -29,6 +29,11 @@ export default function Agent2Page() {
       setTask(found);
       if (found.conversationId) {
         setConversationId(found.conversationId);
+        const res = await fetch(`/api/agent2/messages?conversation_id=${found.conversationId}`);
+        if (res.ok) {
+          const data = await res.json();
+          setMessages(data.messages);
+        }
       } else {
         sendMessage("[init]", "", found);
       }
