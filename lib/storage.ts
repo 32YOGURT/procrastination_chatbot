@@ -1,25 +1,17 @@
 import type { PersonalityType, TaskCard } from './types'
+import { supabaseBrowser } from './supabase-browser'
 
-const KEYS = {
-  userId: 'user_id',
-} as const
-
-// --- 유저 ID ---
-
-export function getUserId(): string {
+export async function getAuthUserId(): Promise<string> {
   if (typeof window === 'undefined') return ''
-  let id = localStorage.getItem(KEYS.userId)
-  if (!id) {
-    id = crypto.randomUUID()
-    localStorage.setItem(KEYS.userId, id)
-  }
-  return id
+  const { data: { session } } = await supabaseBrowser.auth.getSession()
+  if (session?.user) return session.user.id
+  const { data } = await supabaseBrowser.auth.signInAnonymously()
+  return data.user?.id ?? ''
 }
 
-// --- 성격 유형 ---
-
 export async function getUser(): Promise<{ personalityType: PersonalityType | null; userName: string | null }> {
-  const userId = getUserId()
+  const userId = await getAuthUserId()
+  if (!userId) return { personalityType: null, userName: null }
   const res = await fetch(`/api/users/${userId}`)
   if (!res.ok) return { personalityType: null, userName: null }
   const data = await res.json()
@@ -40,7 +32,8 @@ export async function getUserName(): Promise<string | null> {
 }
 
 export async function setUserName(name: string): Promise<void> {
-  const userId = getUserId()
+  const userId = await getAuthUserId()
+  if (!userId) return
   await fetch(`/api/users/${userId}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
@@ -49,7 +42,8 @@ export async function setUserName(name: string): Promise<void> {
 }
 
 export async function setPersonalityType(type: PersonalityType): Promise<void> {
-  const userId = getUserId()
+  const userId = await getAuthUserId()
+  if (!userId) return
   await fetch(`/api/users/${userId}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
@@ -58,7 +52,8 @@ export async function setPersonalityType(type: PersonalityType): Promise<void> {
 }
 
 export async function clearPersonalityType(): Promise<void> {
-  const userId = getUserId()
+  const userId = await getAuthUserId()
+  if (!userId) return
   await fetch(`/api/users/${userId}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
@@ -66,17 +61,17 @@ export async function clearPersonalityType(): Promise<void> {
   })
 }
 
-// --- 과제 ---
-
 export async function getTasks(): Promise<TaskCard[]> {
-  const userId = getUserId()
+  const userId = await getAuthUserId()
+  if (!userId) return []
   const res = await fetch(`/api/tasks?user_id=${userId}`)
   if (!res.ok) return []
   return res.json()
 }
 
 export async function saveTask(task: Omit<TaskCard, 'updatedAt' | 'conversationId'>): Promise<void> {
-  const userId = getUserId()
+  const userId = await getAuthUserId()
+  if (!userId) return
   await fetch('/api/tasks', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

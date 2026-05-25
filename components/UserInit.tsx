@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getUserId, getUser, setUserName } from "@/lib/storage";
+import { getAuthUserId, getUser, setUserName } from "@/lib/storage";
 
 export default function UserInit() {
   const [showModal, setShowModal] = useState(false);
@@ -9,15 +9,18 @@ export default function UserInit() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    const userId = getUserId();
-    fetch("/api/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId }),
-    }).then(async () => {
+    async function init() {
+      const userId = await getAuthUserId();
+      if (!userId) return;
+      await fetch("/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId }),
+      });
       const { userName } = await getUser();
       if (!userName) setShowModal(true);
-    });
+    }
+    init();
   }, []);
 
   const handleSubmit = async () => {
