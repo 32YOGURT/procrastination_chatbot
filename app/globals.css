@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --phone-inner-h: 752px;
 }
 
 @theme inline {
@@ -12,15 +13,26 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.phone-content {
+  height: var(--phone-inner-h);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.phone-content::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-page {
+  height: var(--phone-inner-h);
+  display: flex;
+  flex-direction: column;
 }

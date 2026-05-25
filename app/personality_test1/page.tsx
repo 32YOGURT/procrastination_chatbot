@@ -58,7 +58,7 @@ export default function PersonalityTest1Page() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex flex-col items-center justify-center px-6 py-12">
+    <div className="min-h-full bg-emerald-50 flex flex-col items-center justify-center px-6 py-12">
       <div className="w-full max-w-lg">
         {/* 진행률 */}
         <div className="mb-10">
@@ -70,7 +70,7 @@ export default function PersonalityTest1Page() {
           </div>
           <div className="h-1 bg-neutral-200 rounded-full">
             <div
-              className="h-1 bg-neutral-800 rounded-full transition-all duration-300"
+              className="h-1 bg-emerald-600 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -91,7 +91,7 @@ export default function PersonalityTest1Page() {
                 className={`flex-1 py-4 rounded-xl text-sm font-semibold border-2 transition-all duration-150
                   ${
                     currentAnswer === score
-                      ? "border-neutral-800 bg-neutral-800 text-white"
+                      ? "border-emerald-700 bg-emerald-700 text-white"
                       : "border-neutral-200 bg-white text-neutral-500 hover:border-neutral-400"
                   }`}
               >
@@ -118,7 +118,7 @@ export default function PersonalityTest1Page() {
           <button
             onClick={handleNext}
             disabled={currentAnswer === null}
-            className="flex-1 rounded-xl bg-neutral-800 py-3.5 text-sm font-semibold text-white disabled:opacity-30 hover:bg-neutral-700 transition-colors"
+            className="flex-1 rounded-xl bg-emerald-700 py-3.5 text-sm font-semibold text-white disabled:opacity-30 hover:bg-emerald-800 transition-colors"
           >
             {isLast ? "결과 보기" : "다음"}
           </button>

@@ -10,7 +10,7 @@ export default function TaskCard({ task }: { task: TaskCardType }) {
           <h3 className="text-base font-semibold text-neutral-800">
             {task.title}
           </h3>
-          <span className="shrink-0 rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-600">
+          <span className="shrink-0 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
             {task.procrastinationType}
           </span>
         </div>

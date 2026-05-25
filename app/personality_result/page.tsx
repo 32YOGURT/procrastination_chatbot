@@ -81,7 +81,7 @@ export default function PersonalityResultPage() {
 
   if (!personalityType) {
     return (
-      <div className="min-h-screen bg-[#FAF8F5] flex flex-col items-center justify-center px-6 py-16">
+      <div className="min-h-full bg-emerald-50 flex flex-col items-center justify-center px-6 py-16">
         <style>{`@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');`}</style>
         <div className="w-full max-w-md">
           <div className="mb-12 text-center">
@@ -97,8 +97,8 @@ export default function PersonalityResultPage() {
           <div className="grid grid-cols-2 gap-4">
             <Link href="/personality_test1">
               <div className="group rounded-2xl border border-neutral-200 bg-white p-6 hover:border-neutral-400 hover:shadow-md transition-all duration-200 cursor-pointer">
-                <div className="w-8 h-8 rounded-full bg-neutral-100 group-hover:bg-neutral-900 transition-colors duration-200 mb-4 flex items-center justify-center">
-                  <span className="text-xs font-bold text-neutral-600 group-hover:text-white transition-colors duration-200">1</span>
+                <div className="w-8 h-8 rounded-full bg-emerald-100 group-hover:bg-emerald-700 transition-colors duration-200 mb-4 flex items-center justify-center">
+                  <span className="text-xs font-bold text-emerald-700 group-hover:text-white transition-colors duration-200">1</span>
                 </div>
                 <h3 className="text-sm font-semibold text-neutral-800 mb-1">검사 1</h3>
                 <p className="text-xs text-neutral-400 leading-relaxed">설문 기반 유형 분류</p>
@@ -106,8 +106,8 @@ export default function PersonalityResultPage() {
             </Link>
             <Link href="/personality_test2">
               <div className="group rounded-2xl border border-neutral-200 bg-white p-6 hover:border-neutral-400 hover:shadow-md transition-all duration-200 cursor-pointer">
-                <div className="w-8 h-8 rounded-full bg-neutral-100 group-hover:bg-neutral-900 transition-colors duration-200 mb-4 flex items-center justify-center">
-                  <span className="text-xs font-bold text-neutral-600 group-hover:text-white transition-colors duration-200">2</span>
+                <div className="w-8 h-8 rounded-full bg-emerald-100 group-hover:bg-emerald-700 transition-colors duration-200 mb-4 flex items-center justify-center">
+                  <span className="text-xs font-bold text-emerald-700 group-hover:text-white transition-colors duration-200">2</span>
                 </div>
                 <h3 className="text-sm font-semibold text-neutral-800 mb-1">검사 2</h3>
                 <p className="text-xs text-neutral-400 leading-relaxed">행동 패턴 기반 분류</p>
@@ -122,7 +122,7 @@ export default function PersonalityResultPage() {
   const data = TYPE_DATA[personalityType]
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16" style={{ backgroundColor: data.bg }}>
+    <div className="min-h-full flex flex-col items-center justify-center px-6 py-16" style={{ backgroundColor: data.bg }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');`}</style>
       <div className="w-full max-w-md text-center">
         <p className="text-xs font-medium tracking-[0.2em] uppercase text-neutral-400 mb-8">나의 성격 유형</p>

@@ -58,7 +58,7 @@ export default function UserInit() {
         <button
           onClick={handleSubmit}
           disabled={!name.trim() || submitting}
-          className="rounded-xl bg-neutral-800 py-3 text-sm font-semibold text-white disabled:opacity-30 hover:bg-neutral-700 transition-colors"
+          className="rounded-xl bg-emerald-700 py-3 text-sm font-semibold text-white disabled:opacity-30 hover:bg-emerald-800 transition-colors"
         >
           시작하기
         </button>

@@ -17,7 +17,7 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-full bg-emerald-50">
       {/* 헤더 */}
       <header className="border-b border-neutral-200 bg-white px-6 py-4">
         <div className="mx-auto flex max-w-3xl items-center justify-between">
@@ -33,7 +33,7 @@ export default function DashboardPage() {
           </div>
           <Link
             href="/personality_result"
-            className="rounded-lg border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-600 transition hover:bg-neutral-100"
+            className="rounded-lg border border-emerald-200 px-4 py-2 text-sm font-medium text-emerald-700 transition hover:bg-emerald-50"
           >
             {personalityType ? "성격 재검사" : "성격 검사하기"}
           </Link>
@@ -47,7 +47,7 @@ export default function DashboardPage() {
             <p className="text-neutral-400">아직 등록된 과제가 없어요.</p>
             <Link
               href="/agent1"
-              className="rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700"
+              className="rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
             >
               첫 과제 추가하기
             </Link>
@@ -62,7 +62,7 @@ export default function DashboardPage() {
             <div className="mt-8 flex justify-center">
               <Link
                 href="/agent1"
-                className="rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700"
+                className="rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
               >
                 + 과제 추가
               </Link>

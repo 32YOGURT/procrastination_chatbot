@@ -12,7 +12,7 @@ export default function MessageBubble({ role, content }: MessageBubbleProps) {
       <div
         className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
           role === "user"
-            ? "bg-neutral-800 text-white rounded-br-sm"
+            ? "bg-emerald-700 text-white rounded-br-sm"
             : "bg-white border border-neutral-200 text-neutral-700 rounded-bl-sm"
         }`}
       >

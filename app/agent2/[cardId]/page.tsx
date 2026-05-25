@@ -102,7 +102,7 @@ export default function Agent2Page() {
   if (!task) return null;
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex flex-col">
+    <div className="chat-page bg-emerald-50">
       {/* 헤더 */}
       <header className="border-b border-neutral-200 bg-white px-6 py-4">
         <div className="mx-auto max-w-2xl">
@@ -135,7 +135,7 @@ export default function Agent2Page() {
           <button
             onClick={handleSend}
             disabled={!input.trim() || loading}
-            className="rounded-xl bg-neutral-800 px-5 py-3 text-sm font-semibold text-white disabled:opacity-30 hover:bg-neutral-700 transition-colors shrink-0"
+            className="rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white disabled:opacity-30 hover:bg-emerald-800 transition-colors shrink-0"
           >
             전송
           </button>
