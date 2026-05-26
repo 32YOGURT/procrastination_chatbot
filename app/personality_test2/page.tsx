@@ -11,10 +11,10 @@ function calculatePersonalityType(
 ): PersonalityType {
   const counts: Record<PersonalityType, number> = {
     "비현실적 낙관주의": 0,
-    "자기비난": 0,
-    "현실저항": 0,
+    자기비난: 0,
+    현실저항: 0,
     완벽주의: 0,
-    "자극추구": 0,
+    자극추구: 0,
   };
 
   selected.forEach((type) => {
@@ -60,10 +60,24 @@ export default function PersonalityTest2Page() {
   };
 
   return (
-    <div className="min-h-full bg-emerald-50 flex flex-col items-center justify-center px-6 py-12">
-      <div className="w-full max-w-lg">
+    <div className="h-full bg-emerald-50 flex flex-col">
+      {/* 상단 헤더 */}
+      <div className="shrink-0 flex items-center gap-3 px-5 pt-5 pb-3">
+        <button
+          onClick={() => router.push("/personality_result")}
+          className="w-8 h-8 rounded-full bg-white border border-emerald-100 shadow-sm flex items-center justify-center"
+        >
+          <span className="text-neutral-500 text-base leading-none">‹</span>
+        </button>
+        <p className="text-sm font-semibold text-neutral-700">
+          행동 패턴으로 지연 유형 분석하기
+        </p>
+      </div>
+
+      {/* 스크롤 영역 */}
+      <div className="flex-1 overflow-y-auto px-5 py-3">
         {/* 진행률 */}
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex justify-between text-xs text-neutral-400 mb-2">
             <span>
               {currentIndex + 1} / {QUESTIONS.length}
@@ -79,19 +93,19 @@ export default function PersonalityTest2Page() {
         </div>
 
         {/* 시나리오 */}
-        <div className="bg-neutral-100 rounded-xl px-5 py-4 mb-8">
+        <div className="bg-neutral-100 rounded-xl px-4 py-3 mb-4">
           <p className="text-sm text-neutral-600 leading-relaxed">
             {question.scenario}
           </p>
         </div>
 
         {/* 선택지 */}
-        <div className="flex flex-col gap-3 mb-10">
+        <div className="flex flex-col gap-2.5">
           {question.options.map((option, i) => (
             <button
               key={i}
               onClick={() => handleSelect(option.type)}
-              className={`w-full text-left px-5 py-4 rounded-xl border-2 text-sm leading-relaxed transition-all duration-150
+              className={`w-full text-left px-4 py-3 rounded-xl border-2 text-sm leading-relaxed transition-all duration-150
                 ${
                   currentSelected === option.type
                     ? "border-emerald-700 bg-emerald-700 text-white"
@@ -107,25 +121,25 @@ export default function PersonalityTest2Page() {
             </button>
           ))}
         </div>
+      </div>
 
-        {/* 네비게이션 */}
-        <div className="flex gap-3">
-          {currentIndex > 0 && (
-            <button
-              onClick={handlePrev}
-              className="flex-1 rounded-xl border border-neutral-200 py-3.5 text-sm font-medium text-neutral-600 hover:bg-neutral-100 transition-colors"
-            >
-              이전
-            </button>
-          )}
+      {/* 네비게이션 - 하단 고정 */}
+      <div className="shrink-0 flex gap-3 px-5 pt-3 pb-5">
+        {currentIndex > 0 && (
           <button
-            onClick={handleNext}
-            disabled={currentSelected === null}
-            className="flex-1 rounded-xl bg-emerald-700 py-3.5 text-sm font-semibold text-white disabled:opacity-30 hover:bg-emerald-800 transition-colors"
+            onClick={handlePrev}
+            className="flex-1 rounded-xl border border-neutral-200 py-3 text-sm font-medium text-neutral-600 hover:bg-neutral-100 transition-colors"
           >
-            {isLast ? "결과 보기" : "다음"}
+            이전
           </button>
-        </div>
+        )}
+        <button
+          onClick={handleNext}
+          disabled={currentSelected === null}
+          className="flex-1 rounded-xl bg-emerald-700 py-3 text-sm font-semibold text-white disabled:opacity-30 hover:bg-emerald-800 transition-colors"
+        >
+          {isLast ? "결과 보기" : "다음"}
+        </button>
       </div>
     </div>
   );

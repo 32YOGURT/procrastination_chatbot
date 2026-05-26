@@ -13,7 +13,7 @@ const TYPE_DATA: Record<
     tag: string;
     traits: string[];
     accent: string;
-    bg: string;
+    turtle: string;
   }
 > = {
   "비현실적 낙관주의": {
@@ -24,7 +24,7 @@ const TYPE_DATA: Record<
       "마감 직전에 몰아서 처리하려는 경향",
     ],
     accent: "#B45309",
-    bg: "#FFFBF0",
+    turtle: "/assets/turtle1-1.png",
   },
   자기비난: {
     tag: "자기비난형",
@@ -34,7 +34,7 @@ const TYPE_DATA: Record<
       "우울감, 무기력으로 시작 자체가 어려움",
     ],
     accent: "#4338CA",
-    bg: "#F5F5FF",
+    turtle: "/assets/turtle1-2.png",
   },
   현실저항: {
     tag: "현실저항형",
@@ -44,7 +44,7 @@ const TYPE_DATA: Record<
       "해야 하는 이유보다 하기 싫은 이유를 먼저 찾음",
     ],
     accent: "#BE123C",
-    bg: "#FFF5F7",
+    turtle: "/assets/turtle1-3.png",
   },
   완벽주의: {
     tag: "완벽주의형",
@@ -54,7 +54,7 @@ const TYPE_DATA: Record<
       "준비만 오래 하다가 시작이 늦어짐",
     ],
     accent: "#6D28D9",
-    bg: "#FAF5FF",
+    turtle: "/assets/turtle1-4.png",
   },
   자극추구: {
     tag: "자극추구형",
@@ -64,7 +64,7 @@ const TYPE_DATA: Record<
       "즉각적인 보상과 자극을 선호함",
     ],
     accent: "#065F46",
-    bg: "#F0FDF9",
+    turtle: "/assets/turtle1-5.png",
   },
 };
 
@@ -200,18 +200,7 @@ export default function PersonalityResultPage() {
   const data = TYPE_DATA[personalityType];
 
   return (
-    <div className="h-full flex flex-col" style={{ backgroundColor: data.bg }}>
-      {/* 헤더 */}
-      <div className="shrink-0 flex items-center gap-3 px-5 pt-6 pb-3">
-        <button
-          onClick={handleRetake}
-          className="w-8 h-8 rounded-full bg-white/60 border border-white/80 shadow-sm flex items-center justify-center"
-        >
-          <span className="text-neutral-500 text-base leading-none">‹</span>
-        </button>
-        <p className="text-sm font-semibold text-neutral-700">나의 미루기 타입</p>
-      </div>
-
+    <div className="h-full bg-emerald-50 flex flex-col">
       {/* 결과 내용 */}
       <div className="flex-1 flex flex-col justify-center px-5 pb-4">
         <span
@@ -232,9 +221,22 @@ export default function PersonalityResultPage() {
                 className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
                 style={{ backgroundColor: data.accent }}
               />
-              <p className="text-sm text-neutral-600 leading-relaxed">{trait}</p>
+              <p className="text-sm text-neutral-600 leading-relaxed">
+                {trait}
+              </p>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center mt-5">
+          <div className="relative" style={{ width: 220, height: 176 }}>
+            <Image
+              src={data.turtle}
+              alt="GO북이"
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
         </div>
       </div>
 

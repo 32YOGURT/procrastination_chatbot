@@ -9,10 +9,10 @@ import type { PersonalityType } from "@/lib/types";
 function calculatePersonalityType(answers: number[]): PersonalityType {
   const scores: Record<PersonalityType, number> = {
     "비현실적 낙관주의": 0,
-    "자기비난": 0,
-    "현실저항": 0,
-    "완벽주의": 0,
-    "자극추구": 0,
+    자기비난: 0,
+    현실저항: 0,
+    완벽주의: 0,
+    자극추구: 0,
   };
 
   QUESTIONS.forEach((q, i) => {
@@ -22,7 +22,7 @@ function calculatePersonalityType(answers: number[]): PersonalityType {
 
   return (Object.entries(scores) as [PersonalityType, number][]).reduce(
     (best, [type, score]) => (score > best[1] ? [type, score] : best),
-    ["비현실적 낙관주의", -Infinity] as [PersonalityType, number]
+    ["비현실적 낙관주의", -Infinity] as [PersonalityType, number],
   )[0];
 }
 
@@ -58,7 +58,20 @@ export default function PersonalityTest1Page() {
   };
 
   return (
-    <div className="min-h-full bg-emerald-50 flex flex-col items-center justify-center px-6 py-12">
+    <div className="min-h-full bg-emerald-50 flex flex-col px-6 py-6">
+      {/* 상단 헤더 */}
+      <div className="shrink-0 flex items-center gap-3 mb-25">
+        <button
+          onClick={() => router.push("/personality_result")}
+          className="w-8 h-8 rounded-full bg-white border border-emerald-100 shadow-sm flex items-center justify-center"
+        >
+          <span className="text-neutral-500 text-base leading-none">‹</span>
+        </button>
+        <p className="text-sm font-semibold text-neutral-700">
+          설문으로 지연 유형 분석하기
+        </p>
+      </div>
+
       <div className="w-full max-w-lg">
         {/* 진행률 */}
         <div className="mb-10">
