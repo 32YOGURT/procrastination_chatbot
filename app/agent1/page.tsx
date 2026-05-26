@@ -159,11 +159,19 @@ export default function Agent1Page() {
   return (
     <div className="chat-page bg-emerald-50">
       <header className="border-b border-neutral-200 bg-white px-6 py-4">
-        <div className="mx-auto max-w-2xl">
-          <h1 className="text-sm font-semibold text-neutral-800">과제 추가</h1>
-          <p className="text-xs text-neutral-400">
-            어떤 과제를 미루고 있는지 이야기해주세요.
-          </p>
+        <div className="mx-auto max-w-2xl flex items-center gap-3">
+          <button
+            onClick={() => router.push("/dashboard")}
+            className="w-8 h-8 rounded-full bg-white border border-neutral-200 shadow-sm flex items-center justify-center shrink-0"
+          >
+            <span className="text-neutral-500 text-base leading-none">‹</span>
+          </button>
+          <div>
+            <h1 className="text-sm font-semibold text-neutral-800">과제 추가</h1>
+            <p className="text-xs text-neutral-400">
+              어떤 과제를 미루고 있는지 이야기해주세요.
+            </p>
+          </div>
         </div>
       </header>
 

@@ -79,7 +79,7 @@ export default function DashboardPage() {
             </div>
           </Link>
 
-          <Link href="/agent1" className="w-full">
+          <Link href="/tasks" className="w-full">
             <div className="bg-white rounded-2xl px-5 py-4 flex items-center justify-between shadow-sm border border-emerald-100">
               <div>
                 <p className="text-neutral-800 font-semibold text-sm">
