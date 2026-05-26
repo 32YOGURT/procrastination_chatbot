@@ -6,14 +6,30 @@ import Image from "next/image";
 import { getPersonalityType, getTasks } from "@/lib/storage";
 import type { PersonalityType, TaskCard } from "@/lib/types";
 
+const TURTLE_IMAGES = [
+  "/assets/turtle1-1.png",
+  "/assets/turtle1-2.png",
+  "/assets/turtle1-3.png",
+  "/assets/turtle1-4.png",
+  "/assets/turtle1-5.png",
+];
+
 export default function DashboardPage() {
   const [personalityType, setPersonalityType] =
     useState<PersonalityType | null>(null);
   const [tasks, setTasks] = useState<TaskCard[]>([]);
+  const [turtleIndex, setTurtleIndex] = useState(0);
 
   useEffect(() => {
     getPersonalityType().then(setPersonalityType);
     getTasks().then(setTasks);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTurtleIndex((i) => (i + 1) % TURTLE_IMAGES.length);
+    }, 1500);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -34,14 +50,15 @@ export default function DashboardPage() {
 
         {/* 캐릭터 */}
         <div className="relative mb-6">
-          <Image
-            src="/assets/turtle1-3.png"
-            alt="GO북이 캐릭터"
-            width={220}
-            height={176}
-            style={{ objectFit: "contain" }}
-            priority
-          />
+          <div className="relative" style={{ width: 220, height: 176 }}>
+            <Image
+              src={TURTLE_IMAGES[turtleIndex]}
+              alt="GO북이 캐릭터"
+              fill
+              style={{ objectFit: "contain" }}
+              priority
+            />
+          </div>
         </div>
 
         {/* 메인 버튼 */}
