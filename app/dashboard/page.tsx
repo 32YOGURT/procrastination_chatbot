@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getPersonalityType, getTasks } from "@/lib/storage";
 import type { PersonalityType, TaskCard } from "@/lib/types";
-import TaskCardComponent from "@/components/dashboard/TaskCard";
 
 export default function DashboardPage() {
   const [personalityType, setPersonalityType] =
@@ -17,59 +17,69 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="min-h-full bg-emerald-50">
-      {/* 헤더 */}
-      <header className="border-b border-neutral-200 bg-white px-6 py-4">
-        <div className="mx-auto flex max-w-3xl items-center justify-between">
-          <div>
-            <h1 className="text-lg font-bold text-neutral-800">내 과제 목록</h1>
-            {personalityType ? (
-              <p className="text-sm text-neutral-400">
-                성격 유형 {personalityType}
-              </p>
-            ) : (
-              <p className="text-sm text-amber-500">성격 검사를 완료해주세요</p>
-            )}
-          </div>
-          <Link
-            href="/personality_result"
-            className="rounded-lg border border-emerald-200 px-4 py-2 text-sm font-medium text-emerald-700 transition hover:bg-emerald-50"
-          >
-            {personalityType ? "성격 재검사" : "성격 검사하기"}
+    <div className="min-h-full flex flex-col bg-emerald-50">
+      {/* 히어로 영역 */}
+      <div className="flex-1 flex flex-col items-center justify-center px-6 pt-10 pb-4">
+        {/* 서비스 소개 */}
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-emerald-800 tracking-tight">
+            GO북이
+          </h1>
+          <p className="text-sm text-emerald-600 mt-1.5 leading-relaxed">
+            미루는 나를 혼내지 않고,
+            <br />
+            작은 한 걸음부터 도와주는 AI 거북이
+          </p>
+        </div>
+
+        {/* 캐릭터 */}
+        <div className="relative mb-6">
+          <Image
+            src="/assets/turtle1-3.png"
+            alt="GO북이 캐릭터"
+            width={220}
+            height={176}
+            style={{ objectFit: "contain" }}
+            priority
+          />
+        </div>
+
+        {/* 메인 버튼 */}
+        <div className="w-full flex flex-col gap-3">
+          <Link href="/personality_result" className="w-full">
+            <div className="bg-emerald-600 rounded-2xl px-5 py-4 flex items-center justify-between shadow-lg shadow-emerald-200">
+              <div>
+                <p className="text-white font-semibold text-sm">
+                  내 미루기 타입 알아보기
+                </p>
+                <p className="text-emerald-200 text-xs mt-0.5">
+                  {personalityType
+                    ? `현재 유형: ${personalityType}`
+                    : "나의 지연 행동 유형 파악하기"}
+                </p>
+              </div>
+              <span className="text-white/60 text-xl font-light">›</span>
+            </div>
+          </Link>
+
+          <Link href="/agent1" className="w-full">
+            <div className="bg-white rounded-2xl px-5 py-4 flex items-center justify-between shadow-sm border border-emerald-100">
+              <div>
+                <p className="text-neutral-800 font-semibold text-sm">
+                  할 일 정리하기
+                </p>
+                <p className="text-neutral-400 text-xs mt-0.5">
+                  {tasks.length > 0
+                    ? `등록된 과제 ${tasks.length}개`
+                    : "미루던 일, 오늘 시작해봐요"}
+                </p>
+              </div>
+              <span className="text-neutral-300 text-xl font-light">›</span>
+            </div>
           </Link>
         </div>
-      </header>
+      </div>
 
-      {/* 본문 */}
-      <main className="mx-auto max-w-3xl px-6 py-8">
-        {tasks.length === 0 ? (
-          <div className="flex flex-col items-center gap-4 py-24 text-center">
-            <p className="text-neutral-400">아직 등록된 과제가 없어요.</p>
-            <Link
-              href="/agent1"
-              className="rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
-            >
-              첫 과제 추가하기
-            </Link>
-          </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {tasks.map((task) => (
-                <TaskCardComponent key={task.id} task={task} />
-              ))}
-            </div>
-            <div className="mt-8 flex justify-center">
-              <Link
-                href="/agent1"
-                className="rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
-              >
-                + 과제 추가
-              </Link>
-            </div>
-          </>
-        )}
-      </main>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import UserInit from "@/components/UserInit";
+import BottomNav from "@/components/BottomNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -75,7 +76,10 @@ export default function RootLayout({
 
           {/* App content */}
           <div className="phone-content">
-            {children}
+            <div className="page-scroll">
+              {children}
+            </div>
+            <BottomNav />
           </div>
 
           {/* Home indicator */}

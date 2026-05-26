@@ -21,18 +21,24 @@ body {
 
 .phone-content {
   height: var(--phone-inner-h);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+}
+
+.page-scroll {
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.phone-content::-webkit-scrollbar {
+.page-scroll::-webkit-scrollbar {
   display: none;
 }
 
 .chat-page {
-  height: var(--phone-inner-h);
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
