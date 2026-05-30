@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
         due_date: task.deadline,
       },
       query: message,
-      response_mode: "blocking",
+      response_mode: "streaming",
       conversation_id: conversationId ?? "",
       user: "user",
     }),
@@ -34,11 +34,11 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const data = await res.json();
-  console.log("[agent2] raw response:", JSON.stringify(data, null, 2));
-
-  return NextResponse.json({
-    answer: data.answer,
-    conversationId: data.conversation_id,
+  return new Response(res.body, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      "Connection": "keep-alive",
+    },
   });
 }

@@ -59,26 +59,58 @@ export default function Agent2Page() {
         }),
       });
 
-      const data = await res.json();
-
-      if (data.conversationId) {
-        setConversationId(data.conversationId);
-        updateConversationId(currentTask.id, data.conversationId);
+      if (!res.ok || !res.body) {
+        throw new Error("응답 오류");
       }
 
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.answer },
-      ]);
+      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+      setLoading(false);
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let fullText = "";
+      let newConversationId = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        for (const line of chunk.split("\n")) {
+          if (!line.startsWith("data: ")) continue;
+          const jsonStr = line.slice(6).trim();
+          if (!jsonStr) continue;
+          try {
+            const data = JSON.parse(jsonStr);
+            if (data.event === "message" && data.answer) {
+              fullText += data.answer;
+              setMessages((prev) => {
+                const updated = [...prev];
+                updated[updated.length - 1] = {
+                  role: "assistant",
+                  content: fullText,
+                };
+                return updated;
+              });
+            }
+            if (data.event === "message_end" && data.conversation_id) {
+              newConversationId = data.conversation_id;
+            }
+          } catch {
+            // 파싱 불가 청크 스킵
+          }
+        }
+      }
+
+      if (newConversationId) {
+        setConversationId(newConversationId);
+        updateConversationId(currentTask.id, newConversationId);
+      }
     } catch {
       setMessages((prev) => [
         ...prev,
-        {
-          role: "assistant",
-          content: "오류가 발생했어요. 다시 시도해주세요. ",
-        },
+        { role: "assistant", content: "오류가 발생했어요. 다시 시도해주세요." },
       ]);
-    } finally {
       setLoading(false);
     }
   };
@@ -123,11 +155,7 @@ export default function Agent2Page() {
         </div>
       </header>
 
-      <ChatWindow
-        messages={messages}
-        loading={loading}
-        emptyText="어떤 부분이 가장 어려운지 이야기해주세요."
-      />
+      <ChatWindow messages={messages} loading={loading} />
 
       {/* 입력창 */}
       <div className="border-t border-neutral-200 bg-white px-6 py-4">
